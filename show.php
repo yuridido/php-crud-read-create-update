@@ -1,6 +1,6 @@
 <?php include __DIR__ . '/partials/templates/head.php';
 include __DIR__ . '/partials/show/server.php';
-
+include __DIR__ . '/partials/templates/header.php';
 
 ?>
 
@@ -16,5 +16,6 @@ include __DIR__ . '/partials/show/server.php';
                 <li class="list-group-item">Numero di letti: <?php echo $row['beds'] ?></li>
             </ul>
         </div>
+        <?php include __DIR__ . '/partials/templates/footer.php'; ?>
     </body>
 </html>

@@ -4,7 +4,11 @@ $username = "user";
 $password = "password";
 $dbname = "nome_database";
 
-$conn = new mysqli($servername,$username,$password,$dbname);
+
+$host = "localhost";
+$folder = "folder";
+
+$basepath = $host.$folder;
 
 
 ?>
