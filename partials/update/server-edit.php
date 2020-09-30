@@ -1,5 +1,6 @@
 <?php
 include __DIR__ . '/../database.php';
+include __DIR__ . '/../env.php';
 
 
 $sql = "UPDATE stanze SET room_number = ?, floor = ?, beds = ? WHERE id = ?";
@@ -16,10 +17,10 @@ $id = $_POST['id'];
 $stmt->execute();
 
 // var_dump($stmt);
-
+var_dump($basepath);
 //affected_rows restituisce 1 per modifica fatta, 0 per non fatta, -1 per modifica impossibile
 if($stmt && $stmt->affected_rows > 0) { 
-    header("location: $basepath/show.php?id=$id");;
+    header("location: $basepath/show.php?id=$id");
     die();
 } elseif ($stmt->affected_rows < 0) {
     echo "impossibile effettuare la modifica";
