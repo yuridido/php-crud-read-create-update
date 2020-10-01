@@ -14,7 +14,7 @@ include __DIR__ . '/partials/home/server.php';
                     $stanza_cancellata = $_GET['roomId']; 
                 ?>
                 <div class="alert alert-warning">
-                    <?php echo "hai cancellato la stanza numero $stanza_cancellata"; } ?>
+                    <?php echo "hai cancellato la stanza con id numero $stanza_cancellata"; } ?>
                 </div>
                 <table class="table">
                     <thead>

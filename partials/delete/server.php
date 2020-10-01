@@ -1,5 +1,8 @@
 <?php
 include __DIR__ . '/../database.php';
+include __DIR__ . '/../functions.php';
+
+
 
 if (empty($_POST['id'])) {
     die('nessun id');
@@ -7,24 +10,26 @@ if (empty($_POST['id'])) {
 
 $id = $_POST['id'];
 
-$sql = "DELETE FROM stanze WHERE id = ?";
-// $result = $conn->query($sql);
-// preparo la query con valore placeholder (?) e dichiaro che tipo di dato è (i o s)
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $id);
+removeId($conn, 'stanze', $id, $basepath);
 
-// gli passo l'id e lo eseguo
-$id = $_POST['id'];
-$stmt-> execute();
+// $sql = "DELETE FROM stanze WHERE id = ?";
+// // $result = $conn->query($sql);
+// // preparo la query con valore placeholder (?) e dichiaro che tipo di dato è (i o s)
+// $stmt = $conn->prepare($sql);
+// $stmt->bind_param("i", $id);
 
-if ($stmt && $stmt->affected_rows > 0) {
-    header("location: $basepath/index.php?roomId=id");
-} else {
-    echo "non ho cancellato";
-}
+// // gli passo l'id e lo eseguo
+// $id = $_POST['id'];
+// $stmt-> execute();
+
+// if ($stmt && $stmt->affected_rows > 0) {
+//     header("location: $basepath/index.php?roomId=id");
+// } else {
+//     echo "non ho cancellato";
+// }
 
 
-$conn->close();
+// $conn->close();
 
 
 ?>

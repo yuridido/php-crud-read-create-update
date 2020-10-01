@@ -1,9 +1,8 @@
 <?php
 include __DIR__ . '/../database.php';
-include __DIR__ . '/../env.php';
 
 
-$sql = "UPDATE stanze SET room_number = ?, floor = ?, beds = ? WHERE id = ?";
+$sql = "UPDATE stanze SET room_number = ?, floor = ?, beds = ?, updated_at = NOW() WHERE id = ?";
 // uso i placeholder
 
 $stmt = $conn->prepare($sql);
@@ -16,20 +15,19 @@ $id = $_POST['id'];
 
 $stmt->execute();
 
-// var_dump($stmt);
 var_dump($basepath);
-//affected_rows restituisce 1 per modifica fatta, 0 per non fatta, -1 per modifica impossibile
-if($stmt && $stmt->affected_rows > 0) { 
-    header("location: $basepath/show.php?id=$id");
-    die();
-} elseif ($stmt->affected_rows < 0) {
-    echo "impossibile effettuare la modifica";
-} else {
-    echo "nessuna modifica effettuata";
+// var_dump($id);
+// affected_rows restituisce 1 per modifica fatta, 0 per non fatta, -1 per modifica impossibile
+
+
+ if ($stmt && $stmt->affected_rows > 0) {
+     header("Location: $basepath/show.php?id=$id");
+} elseif ($stmt->affected_rows == 0)  {
+     header("Location: $basepath/update.php?id=$id");
+} else  {
+     header("Location: $basepath/update.php?id=$id");
 }
 
 
 
-// $conn->close();
-
-?>
+$conn->close();
